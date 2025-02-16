@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title></title>
+  <link rel="stylesheet" href="../base.css">
+</head>
+
+<body>
+  <script>
+    function outer() {
+      const outerVar = 'I am the outer var';
+      function inner() {
+        const innerVar = 'I am the inner var';
+        console.log(outerVar);
+        console.log(innerVar);
+      }
+      return inner;
+    }
+    const innerFn = outer();
+    innerFn();
+    // clousures, innerFn has access to outerVar even though it is not in its scope
+
+    function createGreeting(greeting = '') {
+      const myGreet = greeting.toUpperCase();
+      return function(name) {
+        return `${myGreet} ${name}`;
+      };
+    }
+
+    const sayHello = createGreeting('Hello');
+    const sayHey = createGreeting('Hey');
+    console.log(sayHello('John'));
+    console.log(sayHey('John'));
+
+    function createGame(gameName) {
+      let score = 0;
+      return function win() {
+        score++;
+        return `Your score is ${score} for the game ${gameName}`;
+      };
+    }
+
+    const hockeyGame = createGame('Hockey');
+    const soccerGame = createGame('Soccer');
+    console.log(hockeyGame());
+    console.log(hockeyGame());
+    console.log(soccerGame());
+    // clousures, hockeyGame and soccerGame have access to score even though it is not in their scope
+    // score mantiene su valor entre llamadas a hockeyGame y soccerGame porque es una variable privada y no se puede acceder a ella desde fuera de la función createGame
+  </script>
+
+</body>
+
+</html>
