@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>The DOM</title>
+  <link rel="stylesheet" href="../../base.css">
+  <!-- <script async defer src="./the-dom.js"></script> -->
+  <!-- <script async defer src="./classes.js"></script> -->
+  <!-- <script async defer src="./creating.js"></script> -->
+  <!-- <script async defer src="./creating-with-string.js"></script>   -->
+  <script async defer src="./traversing.js"></script>
+
+  <style>
+    img{
+      transition: all 1s;
+    }
+    .round {
+      border-radius: 50%;
+      transform: rotate(1turn) scale(0.8);
+      box-shadow: inset 10px 10px 10px rgba(0,0,0,0.5);
+    }
+
+    .cool {
+      border: 2px solid red;
+    }
+
+    .items {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .pizza {
+      color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <p class="wes">I'm Wes, I <em>love</em> to bbq and <strong>websites</strong></p>
+
+  <!-- <img class="nice cool" src="https://www.seinstitute.com/wp-content/uploads/2020/01/placeholder-female-300x300-1.jpg" /> -->
+  <div class="items">
+    <p>Hi I'm a item</p>
+    <div class="item">
+      <h2>Sub Div
+        <style>
+          h2 {
+            color: red;
+          }
+        </style>
+      </h2>
+      <p>Hi I'm a item</p>
+      <p class="pizza">quiero pizza</p>
+
+    </div>
+    <img src="https://picsum.photos/200" />
+    <img src="https://picsum.photos/200" />
+    <img class="custom" data-name="Gianni" data-last="Pasquinelli" src="https://picsum.photos/200" />
+    <!-- <p>Hi I'm a item</p>
+    <p>Hi I'm a item</p> -->
+  </div>
+</body>
+
+</html>
