@@ -1,1 +1,0 @@
-console.log('esto esta en otro archivo')
