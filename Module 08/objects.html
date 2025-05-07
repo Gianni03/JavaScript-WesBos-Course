@@ -74,12 +74,19 @@
       first: 'wes',
       last: 'bos'
     };
+    // cuando se comparan objectos estos comparan la referencia de memoria no el valor
 
     // const person3 = person1;
     // person3.first = 'Larry';
     // console.log(person3.first);
     // console.log(person1.first);
+
+    // cuando objetos y arrays son copiados por referencia, en realidad no esta siendo copiados, sino referenciados
+    // con el spread operator (...) se hace una copia superficial, superficial es porque solo copia el primer nivel de propiedades
+
     // const person3 = { ...person1 };
+
+    // lodash es una libreria que nos permite hacer copias profundas de objetos y arrays
     const person3 = _.cloneDeep(person1);
     person3.first = 'Larry';
 
@@ -106,6 +113,8 @@
       data = 'something else';
       console.log(data);
     }
+    doStuff(name1);
+    // What that means is when you passed in the name1 variable to doStuff, you were only passing in the value of "wes", it doesn't actually reference to the external variable (which is good!).
 
     function doStuff2(data) {
       data.tomatoes = 10000000000;
@@ -113,6 +122,8 @@
     }
 
     doStuff2(inventory);
+
+    // if you pass in an object to a function, and you modify that object, the external object will also be updated.
 
 
   </script>
