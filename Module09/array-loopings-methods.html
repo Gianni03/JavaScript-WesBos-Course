@@ -145,11 +145,38 @@
    })
 
    // forEach no retorna ningún valor
+   console.clear();
 
 
-   
+   // map, filter, reduce
+   // map: crea un nuevo array con los resultados de la función aplicada a cada elemento del array original
+
+   function addArms(face) {
+    return `🤚 ${face} 🤚`;
+   }
+
+   const toys = faces.map(addArms)
+   console.log(toys)
+
   
-  
+  const orderTotalWithTax = orderTotals.map(total => total * 1.21);
+  console.log(orderTotalWithTax);
+
+
+  const cleanPeople = people.map(function(person){
+    console.log(person);
+    const birthday = new Date(person.birthday).getTime();
+    const now = Date.now();
+    console.dir(birthday, now);
+    const age = Math.floor((now - birthday) / 31536000000);
+    console.log(age);
+    return {
+      age,
+      name: `${person.names.first} ${person.names.last}`,
+    }
+  });
+
+  console.table(cleanPeople)
   
   
   </script>
