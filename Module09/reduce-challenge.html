@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reduce</title>
+  <link rel="stylesheet" href="../base.css">
+</head>
+
+<body>
+
+  <script>
+
+    // tomar todo el texto de una pagina
+    // contar cuantas veces aparace cade eetra y numero
+
+    const text = `
+Skip to content
+Navigation Menu
+Gianni03
+
+Overview
+Repositories 61
+Projects
+Packages
+
+    Stars 114
+
+Gianni Pasquinelli Gianni03 · he/him
+Frontend developer - React | Musician
+31 followers · 83 following
+
+https://www.avature.net/
+Rosario, Argentina
+giannipasquinelli@gmail.com
+https://www.linkedin.com/in/gianni-pasquinelli/?locale=en_US
+
+    https://giannipasquinelli-webdev.netlify.app/index-en.html
+
+Achievements
+Achievement: Quickdraw
+Achievement: Pull Sharkx2
+Achievement: YOLO
+Organizations
+@CodeStrong2023 @Focus-On-Kids
+Gianni03/README.md
+Hi there 👋
+My name is Gianni, from Argentina 🇦🇷.
+
+At the time I graduated from high school 🧑‍🏫 I was in doubt about what career I should do🤔, computer systems👨‍💻 or music👨‍🎤. The emotional side won the battle and I went ahead and began to study music composition at the UNR. After some difficulties at work increased by the pandemic, a possibility of formation in web development came up, and without hesitation I started this other passion💻.
+
+With my musical artistic background, I approach in a creative way, in the balance of the creative and the functional. Intrinsicly thinking in various perspectives, from direct to outside of the box. By keeping the capacity of surprise intact, I always staying curious on how a solution is achieved through several paths and how the same path has different outcomes.
+
+Through my work I find a way to fulfill my need to express myself to the world through a creative mindset to intellectual.
+
+gianni03
+
+    🔭 I’m currently working at Avature
+
+    🌱 I’m always learning React, CSS, Javacript
+
+    🌱 I'm currently studying with wes bos, josh comeau and hardvard cs50 courses.
+
+    🌱 I finished my university studies in programming at UTN - San Rafael (Técnicatura en programación)
+
+    👨‍💻 All of my projects are available at https://giannipasquinelli-webdev.netlify.app/index-en.html
+
+    📫 How to reach me giannipasquinelli@gmail.com
+
+    ⚡ Some random things I have an old laptop, with linux mint, because winUpdate crashed many times, now I'm happy with Linux. Also I'm a guitar player, loves prog-metal,prog-rock, guitar virtuosos, minimalistic clasic composers, atonal music.
+
+Connect with me:
+
+linkedin logo gianni pasquinelli
+Languages and Tools:
+
+html5 css3 javascript react git
+
+github gitlab figma blender linux jira notion
+
+gianni03
+
+ gianni03
+
+gianni03
+Pinned Loading
+
+Portfolio Public
+
+Portfolio con diseño y desarrollo propio
+
+HTML
+
+1
+CoderhouseReact-Pasuinelli Public
+
+JavaScript
+
+1
+Restaurant Public
+
+HTML
+
+1
+Catch-of-the-day Public
+
+JavaScript
+drumKit Public
+
+HTML
+Reduxtragram Public
+
+    JavaScript
+
+201 contributions in the last year
+Skip to contributions year list
+Contribution Graph
+Day of Week 	August Aug 	September Sep 	October Oct 	November Nov 	December Dec 	January Jan 	February Feb 	March Mar 	April Apr 	May May 	June Jun 	July Jul 	August Aug
+Sunday Sun 																																																					
+Monday Mon 																																																					
+Tuesday Tue 																																																					
+Wednesday Wed 																																																					
+Thursday Thu 																																																					
+Friday Fri 																																																					
+Saturday Sat 																																																					
+Learn how we count contributions
+Less
+No contributions.
+Low contributions.
+Medium-low contributions.
+Medium-high contributions.
+High contributions.
+More
+@code50
+@me50
+@LinkedInLearning
+More
+Activity overview
+Contributed to Gianni03/JavaScript-WesBos-Course, CodeStrong2023/2-de-Ram---e-commerce, code50/78038365 and 14 other repositories
+Loading
+  Code review 5% Issues 17% Pull requests 78% Commits
+Contribution activity
+August 2025
+
+    Gianni03/odoo-basic-module 7 commits
+    Gianni03/Gianni03 1 commit
+
+    Gianni03/odoo-basic-module Python
+    This contribution was made on Aug 1
+    Aug 1
+
+Loading
+
+Seeing something unexpected? Take a look at the GitHub profile guide.
+
+    2025
+    2024
+    2023
+    2022
+    2021
+
+Footer
+© 2025 GitHub, Inc.
+Footer navigation
+
+    Terms
+    Privacy
+    Security
+    Status
+    Docs
+    Contact
+
+Gianni03 (Gianni Pasquinelli)
+`;
+
+
+    function isValidChar(char) {
+      return char.match(/[a-zA-Z0-9]/)
+    }
+
+    function lowerCase(char) {
+      return char.toLowerCase();
+    }
+
+    function instanceCounter(counts, char) {
+      counts[char] ? counts[char] = counts[char] + 1 : counts[char] = 1;
+      return counts
+    }
+
+    const result = text
+      .split('')
+      .filter(isValidChar)
+      .map(lowerCase)
+      .reduce(instanceCounter, {})
+
+      function sortByValue(a, b) {
+        return a[1] - b[1]
+      }
+
+      const sortedResults = Object
+      .entries(result)
+      .sort(sortByValue)
+
+    console.log(sortedResults);
+
+  </script>
+
+</body>
+
+</html>
