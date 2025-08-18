@@ -129,81 +129,117 @@
       Looping Methods
     */
 
-    function logTopping(topping,index, originalArray){
+    function logTopping(topping, index, originalArray) {
       const nextTopping = originalArray[index + 1];
       const prevTopping = originalArray[index - 1];
-      
+
       prevTopping ? console.log(prevTopping) : null;
       console.log(topping);
       nextTopping ? console.log(nextTopping) : console.log("GoodBye");
       console.log("----------------------");
     }
-   toppings.forEach(logTopping)
-   
-   toppings.forEach(topping => {
-    console.log(topping);
-   })
+    toppings.forEach(logTopping)
 
-   // forEach no retorna ningún valor
-   console.clear();
+    toppings.forEach(topping => {
+      console.log(topping);
+    })
 
-
-   // map, filter, reduce
-   // map: crea un nuevo array con los resultados de la función aplicada a cada elemento del array original
-
-   function addArms(face) {
-    return `🤚 ${face} 🤚`;
-   }
-
-   const toys = faces.map(addArms)
-   console.log(toys)
-
-  
-  const orderTotalWithTax = orderTotals.map(total => total * 1.21);
-  console.log(orderTotalWithTax);
+    // forEach no retorna ningún valor
+    console.clear();
 
 
-  const cleanPeople = people.map(function(person){
-    console.log(person);
-    const birthday = new Date(person.birthday).getTime();
-    const now = Date.now();
-    console.dir(birthday, now);
-    const age = Math.floor((now - birthday) / 31536000000);
-    console.log(age);
-    return {
-      age,
-      name: `${person.names.first} ${person.names.last}`,
+    // map, filter, reduce
+    // map: crea un nuevo array con los resultados de la función aplicada a cada elemento del array original
+
+    function addArms(face) {
+      return `🤚 ${face} 🤚`;
     }
-  });
 
-  console.table(cleanPeople)
-  
-  const over40 = cleanPeople.filter(person => person.age > 40);
-  // fiter devuelve todos los item que hacen macth
-  
-  console.table(over40)
+    const toys = faces.map(addArms)
+    console.log(toys)
 
 
-  function findById(id) {
-    return function isStudent(studentId) {
-      return studentId.id === id;
+    const orderTotalWithTax = orderTotals.map(total => total * 1.21);
+    console.log(orderTotalWithTax);
+
+
+    const cleanPeople = people.map(function (person) {
+      console.log(person);
+      const birthday = new Date(person.birthday).getTime();
+      const now = Date.now();
+      console.dir(birthday, now);
+      const age = Math.floor((now - birthday) / 31536000000);
+      console.log(age);
+      return {
+        age,
+        name: `${person.names.first} ${person.names.last}`,
+      }
+    });
+
+    console.table(cleanPeople)
+
+    const over40 = cleanPeople.filter(person => person.age > 40);
+    // fiter devuelve todos los item que hacen macth
+
+    console.table(over40)
+
+
+    function findById(id) {
+      return function isStudent(studentId) {
+        return studentId.id === id;
+      }
     }
-  }
 
-  function findByProp(prop, propWeAreLookingFor){
-      return function isStudent(student){
+    function findByProp(prop, propWeAreLookingFor) {
+      return function isStudent(student) {
         return student[prop] === propWeAreLookingFor;
       }
-  }
+    }
 
 
-  const student = students.find(findById('565a'));
-  const student2 = students.find(findByProp('id', '565a'));
-  const student3 = students.find(findByProp('first_name', 'Micki'));
-  console.log(student);
-  console.log(student2);
-  console.log(student3);
-  
+    const student = students.find(findById('565a'));
+    const student2 = students.find(findByProp('id', '565a'));
+    const student3 = students.find(findByProp('first_name', 'Micki'));
+    console.log(student);
+    console.log(student2);
+    console.log(student3);
+
+
+    console.clear()
+
+    //reduce
+    // toma un array de datos y lo reduce a un solo valor
+    // el primer argumento es una función que se ejecuta en cada elemento
+    // el segundo argumento es el valor inicial del acumulador
+
+    let total = 0;
+    orderTotals.forEach(singleTotal => {
+      total = total + singleTotal;
+    })
+    console.log(total);
+
+    function tallyNumbers(tally, currentTotal) {
+      console.log(`The current tally is ${tally}`);
+      console.log(`The current total is ${currentTotal}`);
+      console.log('----------------------');
+      return tally + currentTotal;
+    }
+    const allOrders = orderTotals.reduce(tallyNumbers, 0);
+    console.log(allOrders);
+
+    function inventoryReducer(totals, item) {
+      console.log(item.type);
+      totals[item.type] = totals[item.type] + 1 || 1;
+      return totals;
+    }
+    const inventoryCounts = inventory.reduce(inventoryReducer, {})
+    console.log(inventoryCounts);
+
+    const totalInventoryPrice = inventory.reduce((acc, item) => acc + item.price, 0);
+    console.log(totalInventoryPrice);
+
+
+
   </script>
 </body>
 
