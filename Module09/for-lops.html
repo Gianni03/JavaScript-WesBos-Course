@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For loops</title>
+  <link rel="stylesheet" href="../base.css">
+</head>
+
+<body>
+
+  <script>
+
+    const numbers = [2, 34, 3, 23, 42, 3, 1, 65, 364, 5, 645, 6];
+
+    const name = 'Gianni Pasquinelli'
+
+    const gianni = {
+      name: 'Gianni',
+      surname: 'Pasquinelli',
+      age: 30,
+      country: 'Italy'
+    }
+
+
+    // for
+
+    for (let i = 0; i < numbers.length; i++) {
+      console.log(numbers[i]);
+    }
+
+    // for of
+    // es un for que itera sobre los valores de un iterable (como un array)
+    for (const letter of name) {
+      console.log(letter);
+    }
+
+    for (const number of numbers) {
+      console.log(number);
+    }
+
+    // for in, se usa para iterar sobre las propiedades enumerables de un objeto (keys)
+    for (const props in gianni) {
+      console.log(props);
+    }
+
+    const baseHumanStats = {
+      feet: 2,
+      arms: 2,
+      eyes: 2,
+      head: 1
+    };
+
+    function Human(name) {
+      this.name = name;
+    }
+
+    Human.prototype = baseHumanStats;
+
+    const wes = new Human('Wes');
+
+    console.log(Object.entries(wes)); 
+
+    for (const prop in wes) {
+      console.log(prop);
+    }
+
+
+    // while loop
+    let i = 0;
+    while (i < numbers.length) {
+      console.log(numbers[i]);
+      i++;
+    }
+
+
+  </script>
+</body>
+
+</html>
