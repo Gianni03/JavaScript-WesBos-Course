@@ -9,7 +9,7 @@ console.log(video, canvas, faceCanvas, faceDetector);
 
 // funcion que popula el video del usuario
 async function populateVideo() {
-  const stream = await navigator.mediaDevices.getUserMedia({video: {width: 1280, height: 720}});
+  const stream = await navigator.mediaDevices.getUserMedia({video: {width: 680, height: 420}});
   video.srcObject = stream;
   await video.play();
 
@@ -22,4 +22,9 @@ async function populateVideo() {
   faceCanvas.height = video.videoHeight;
 }
 
-populateVideo();
+async function detect() {
+  const faces = await faceDetector.detect(video);
+  console.log(faces);
+}
+
+populateVideo().then(detect);
