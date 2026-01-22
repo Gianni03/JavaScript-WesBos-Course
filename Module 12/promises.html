@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Promises</title>
+  <link rel="stylesheet" href="../base.css">
+</head>
+
+<body>
+
+
+
+  <script>
+
+    function makePizza(toppings = []) {
+      const pizzaPromise = new Promise(function (resolve, reject) {
+        const amountOfTimeToBake = 500 + (toppings.length * 200)
+        setTimeout(function(){
+          resolve(`lista la pizza con ${toppings.join(' - ')}`)
+        }, amountOfTimeToBake)
+      })
+      return pizzaPromise
+    }
+
+    // const pizzaMuzza = makePizza(['muzza'])
+    // const pizzaEspecial = makePizza(['huevo', 'morrón', 'muzza'])
+    // console.log(pizzaMuzza)
+    // console.log(pizzaEspecial)
+
+    // pizzaEspecial.then(function(pizza) {
+      //   console.log(pizza)
+      // })
+      
+      // makePizza(['muzza', 'queso', 'aceitunas']).then(function(pizza){
+      //   console.log(pizza)
+      //   return makePizza(['pepperoni'])
+      // })
+      // .then(function(pizza){
+      //   console.log(pizza)
+      // })
+
+
+      const pizzaPromise1 = makePizza(['muzza', 'queso', 'aceitunas'])
+      const pizzaPromise2 = makePizza(['muzza'])
+      const pizzaPromise3 = makePizza(['pepperoni','jamon', 'morron', 'queso', 'aceitunas'])
+      const pizzaPromise4 = makePizza(['muzza', 'queso'])
+
+      const dinnerPromise = Promise.all([pizzaPromise1,pizzaPromise2,pizzaPromise3,pizzaPromise4])
+     dinnerPromise.then(function([riojana, solita, con_tutti, doble]) {
+      console.log(riojana, solita, con_tutti, doble)
+     })
+
+  </script>
+
+</body>
+
+</html>
