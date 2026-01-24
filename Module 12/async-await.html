@@ -16,15 +16,47 @@
       })
     }
 
-    async function go() {
-      console.log('start')
-      await wait(2000)
-      console.log('end')
+    function makePizza(toppings = []) {
+      const pizzaPromise = new Promise(function (resolve, reject) {
+        if (toppings.includes('pineaple')) {
+          reject('no way!!!')
+        }
+        const amountOfTimeToBake = 500 + (toppings.length * 200)
+        setTimeout(function () {
+          resolve(`lista la pizza con ${toppings.join(' - ')}`)
+        }, amountOfTimeToBake)
+      })
+      return pizzaPromise
     }
 
-    go()
 
-    const arrow = async () => { }
+    async function makeDinner() {
+      const pizza1Promise = makePizza(['pepperoni'])
+      const pizza2Promise = makePizza(['pepperoni', 'cheese'])
+      const [pep, che] = await Promise.all([pizza1Promise, pizza2Promise])
+      console.log(pep, che)
+    }
+
+    makeDinner()
+
+
+
+    // async function go() {
+    //   console.log('start')
+    //   await wait(2000)
+    //   console.log('end')
+    // }
+    // go()
+    // const arrow = async () => { }
+    // window.addEventListener('click', async function() {})
+
+    // const person = {
+    //   sayHi: async function () {        
+    //   },
+    //   async sayHello() {        
+    //   },
+    //   sayHi: async () => {}
+    // }
 
   </script>
 </body>
